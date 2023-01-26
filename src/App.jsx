@@ -5,6 +5,38 @@ import "./global.css";
 import styles from "./App.module.css";
 import { Sidebar } from "./components/Sidebar";
 
+
+const posts = [
+  {
+    id: 1,
+    author:{
+      avatarUrl: 'https://github.com/robsondejesus1996.png',
+      name: 'Robson de Jesus',
+      role: 'Desenvolvedor'
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifólio. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+      { type: 'link', content: 'jane.design/doctorcare' },
+    ],
+    publishedAt: new Date('2023-01-26 10:42:00')
+  },
+  {
+    id: 2,
+    author:{
+      avatarUrl: 'https://github.com/brendapaetzoldt.png',
+      name: 'Brenda Paetezont',
+      role: 'Desenvolvedor IPM'
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifólio. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+      { type: 'link', content: 'jane.design/doctorcare' },
+    ],
+    publishedAt: new Date('2023-01-24 12:42:00')
+  }
+];
+
 function App() {
   return (
     <div>
@@ -13,16 +45,11 @@ function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post
-            author="Robson de Jesus"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint delectus tenetur debitis eos harum numquam. Architecto cupiditate porro nemo? Sint iusto dolorem ad id eum fuga ullam. Doloribus, veniam labore?
-            "
-          />
-          <Post
-            author="Robson de Jesus"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint delectus tenetur debitis eos harum numquam. Architecto cupiditate porro nemo? Sint iusto dolorem ad id eum fuga ullam. Doloribus, veniam labore?
-            "
-          />
+          {posts.map(post => <Post
+            key={post.id}
+            author={post.author}
+            content={post.content}
+            publishedAt={post.publishedAt} />)}
         </main>
       </div>
     </div>
